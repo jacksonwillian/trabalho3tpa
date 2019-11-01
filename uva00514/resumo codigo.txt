@@ -1,0 +1,21 @@
+passo 1 
+ 
+tratar a entreda: 
+	identificar o tamanho dos vetores e montar os vetores
+
+passar o vetor e seu tamanho para a validação:
+
+	variaveis importantes:
+		int i percorre o vetor [0...n-1]
+		int k, simula a saida, [1..n]
+	
+	A validação pode ser dividida em 3 etapas:
+	
+	- ADICIONAR ELEMENTOS NA PILHA na pilha, k, toda vez que é adicionado k é imcrementado em um, isso é usado para validar o loop principal da validação
+	- RETIRAR ELEMENTOS DA PILHA, enquando o elemento da pilha for igual a vet[i] ele sai da pilha e i é incrementado
+	- RESULTADO, se i for = n quer dizer que todos elementos da entrada podem ser realocados para a saida solicitada	
+		     se i != n não é possivel montar a saida desejada
+		     se n = 0, pula linha
+	
+	
+	
