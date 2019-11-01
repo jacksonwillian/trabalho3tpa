@@ -1,2 +1,3 @@
-# trabalho3tpa
-Trabalho 3
+# Trabalho 3 TPA
+
+Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
