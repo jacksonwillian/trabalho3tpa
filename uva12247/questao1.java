@@ -34,28 +34,54 @@ class Questao1 {
 				Collections.sort(princesa, Collections.reverseOrder());
 				Collections.sort(principe, Collections.reverseOrder());
 
-				if(princesa.get(0) > principe.get(0) ){
-					valor = -1;
-				}else{
-					valor = 1;
-				}
+				if(princesa.get(0) > principe.get(0) && princesa.get(1) > principe.get(1)){
 
-				if(princesa.get(1) > principe.get(1) ){
-					valor += -1;
-				}else{
-					valor += 1;
-				}
-
-				if (valor == -2){
 					System.out.println("-1");
-				}else{
+
+				}else if (princesa.get(0) < principe.get(0)  &&  princesa.get(1) > principe.get(1)  ){
+
+					valor = princesa.get(0) + 1;
+					while ( valor <= 52 && (principe.contains(valor) || princesa.contains(valor))){
+				 		valor += 1;
+					}
+
+					if (valor == 53){
+						valor = -1;
+					}
+					
+					System.out.println(Integer.toString( valor) );
+
+				}else if (( princesa.get(0) > principe.get(0))  &&  ( princesa.get(1) < principe.get(1) ) ){
+					// aqui
+					valor = princesa.get(1) + 1;
+					while ( valor <= 52 && (principe.contains(valor) || princesa.contains(valor))){
+				 		valor += 1;
+					}
+
+					if (valor == 53){
+						valor = -1;
+					}
+					
+					System.out.println(Integer.toString( valor) );
+				}else if ( princesa.get(0) < principe.get(0) &&  princesa.get(1) < principe.get(1)  &&  princesa.get(0) > principe.get(1)  ){
+
 					valor = princesa.get(1) + 1;
 					while (principe.contains(valor) || princesa.contains(valor)){
-						valor += 1;
+				 		valor += 1;
+					}
+					System.out.println(Integer.toString( valor) );
+
+				}else if (princesa.get(0) < principe.get(0) &&  princesa.get(1) < principe.get(1)   &&  princesa.get(0) <= principe.get(1)  ){
+
+					valor = 1;
+					while (principe.contains(valor) || princesa.contains(valor)){
+				 		valor += 1;
 					}
 					System.out.println(Integer.toString( valor) );
 				}
+			
 				c = scanner.hasNext();
+
 			}else{
 				c = false;
 			}
