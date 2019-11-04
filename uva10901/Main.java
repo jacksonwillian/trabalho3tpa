@@ -16,61 +16,73 @@ public class Main {
         //int m = linhas de entrada
 
         Vector<Integer> a = new Vector();
-        a.add(10);
-        a.add(1);
+        a.add(0);
+        a.add(-1);
+        a.add(0);
 
         Vector<Integer> b = new Vector();
-        b.add(25);
+        b.add(10);
         b.add(-1);
+        b.add(1);
 
         Vector<Integer> c = new Vector();
-        c.add(40);
+        c.add(20);
         c.add(-1);
+        c.add(2);
 
         LinkedList<Vector> entrada = new LinkedList<>();
         entrada.add(a); 
-        entrada.add(b); 
+        entrada.add(b);
         entrada.add(c);
         //input
 
-        Queue<Integer> balca = new LinkedList<>();
+        Integer[] saida = new Integer[entrada.size()];
+
+        Queue<Vector> balca = new LinkedList<>();
 
         int ctime = 0;
         int lado =  -1;
-        
+        int k = 0;
+
         while(entrada.peek() != null) {
             int j = 0;
-            while ((int)entrada.get(j).get(0) <= ctime) {
+            while ((int)entrada.get(j).get(0) <= ctime && n > balca.size()) {
                 if ((int)entrada.get(j).get(1) == lado){
-                    balca.add((int)entrada.get(j).get(0));
+                    balca.add(entrada.get(j));
                     entrada.remove(j);
+                    j=0;
+                    if (entrada.size() == 0) {
+                        break;
+                    }
                 }
                 else{
                     j = j+1;
-                    if (j == entrada.size()) break;
+                    if (j >= entrada.size()) break;
                 }
             }
             if (balca.size() > 0) {
                 ctime = ctime + t;
                 lado = lado *-1;
                 while (balca.size() > 0){
+                    k = ((int)balca.peek().get(2));
+                    balca.poll();
+                    saida[k] = ctime;
                     //descarrega
                 }
             }
-            //espera
-        }
-    }
-
-}
-
-/*
-            if ((int)entrada.peek().get(0) > ctime) {
+            else if ((int)entrada.get(0).get(1) == lado) {
                 ctime = ctime + ((int)entrada.peek().get(0) - ctime);
-                balca.add((int)entrada.poll().get(0));
             }
-            if ((int)entrada.peek().get(1) != lado){
-                ctime = ctime + t;
+            else {
+                ctime = ctime + ((int)entrada.peek().get(0) - ctime) + t;
                 lado = lado *-1;
             }
-
-            */
+            //espera
+        }
+        //resultado
+        for (int i = 0; i < saida.length; i++) {
+            System.out.println(saida[i]);
+        }
+    }
+    Integer a = 0;
+}
