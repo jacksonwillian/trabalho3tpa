@@ -4,32 +4,42 @@
  */
 
 import java.util.Scanner;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Collections;
 import java.lang.Math;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 class Main {
 
 	public static void main(String[] args) {
 		
-		Scanner scanner;  
+		BufferedReader br;
 		String linha, resposta;
 		String[] vetorNumeros;
 
-		scanner = new Scanner(System.in);
-		while( scanner.hasNext() ) {
-			linha = scanner.nextLine();
-			vetorNumeros  = linha.split(" ");
-			resposta = isJolly(vetorNumeros) ? "Jolly" : "Not jolly";
-		    System.out.println( resposta );
-		}
-		scanner.close();
+		br = new BufferedReader(new InputStreamReader(System.in));
+
+		try {
+
+			linha =  br.readLine();
+			while( linha != null ) {
+				vetorNumeros  = linha.split(" ");
+				resposta = isJolly(vetorNumeros) ? "Jolly" : "Not jolly";
+			    System.out.println( resposta );
+			    linha =  br.readLine();
+			}
+	    }
+	    catch (Exception  e){
+	        System.out.println(e);
+	    }
+		
 	}
 
 
 	public static boolean isJolly (String[] vetorNumeros){
 		
-		ArrayList<Integer> listaDiferenca = new ArrayList<Integer>();
+		LinkedList<Integer> listaDiferenca = new LinkedList<Integer>();
 		int tamanhoVetor, tamanhoLista, i, valorA, valorB;
 
 		tamanhoVetor = Integer.parseInt(vetorNumeros[0]);
