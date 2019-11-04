@@ -1,42 +1,56 @@
+import java.util.Scanner;
 import java.util.Queue;
 import java.util.Vector;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
 /**
- * Main
+ * uva10901
  */
 public class Main {
 
     public static void main(String[] args) {
-        //esquerda -1 direita 1
-        // input 
-        int n = 2;
-        int t = 10;
-        //int m = linhas de entrada
+        Scanner input = new Scanner(System.in);
+        int c, x, n, t, m;
+        x = 0;
+        c = input.nextInt();
+        while (x < c){
+            n = input.nextInt();
+            t = input.nextInt();
+            m = input.nextInt();
 
-        Vector<Integer> a = new Vector();
-        a.add(10);
-        a.add(1);
-        a.add(0);
+            LinkedList<Vector> entrada = new LinkedList<>();
 
-        Vector<Integer> b = new Vector();
-        b.add(25);
-        b.add(-1);
-        b.add(1);
+            for (int i = 0; i < m; i++) {
+                Vector<Integer> carro = new Vector<Integer>();
+                int t_entrada = input.nextInt();
+                String l_entrada = input.nextLine();
 
-        Vector<Integer> c = new Vector();
-        c.add(40);
-        c.add(-1);
-        c.add(2);
+                carro.add(t_entrada);
+                l_entrada=l_entrada.replace(" ","");
+                if (l_entrada.equalsIgnoreCase("right")) {
+                    carro.add(1);
+                }
+                else{
+                    carro.add(-1);
+                } 
+                carro.add(i);
 
-        LinkedList<Vector> entrada = new LinkedList<>();
-        entrada.add(a); 
-        entrada.add(b);
-        entrada.add(c);
-        //input
+                entrada.add(carro);
+            }
+            bimba(n, t , m, entrada);
 
-        Integer[] saida = new Integer[entrada.size()];
+            if (x<c-1) {
+                System.out.println("");
+            }
+
+            x = x+1;
+        }
+        input.close();
+    }
+
+    public static void bimba(int n, int t, int m, LinkedList<Vector> entrada ) {
+    
+        Integer[] saida = new Integer[m];
 
         Queue<Vector> balca = new LinkedList<>();
 
@@ -73,8 +87,12 @@ public class Main {
             else if ((int)entrada.get(0).get(1) == lado) {
                 ctime = ctime + ((int)entrada.peek().get(0) - ctime);
             }
-            else {
+            else if ((int)entrada.get(0).get(0) > ctime){
                 ctime = ctime + ((int)entrada.peek().get(0) - ctime) + t;
+                lado = lado *-1;
+            }
+            else {
+                ctime = ctime + t;
                 lado = lado *-1;
             }
             //espera
