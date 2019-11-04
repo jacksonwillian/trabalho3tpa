@@ -5,29 +5,57 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.lang.Math;
 
 class Main {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		int i = 0;
-		while( scanner.hasNext() ) {
+		int i  = 0, j = 0;
+		int tamanho = 0;
+		int valor = 0;
+		String resposta;
 
+		while( scanner.hasNext() ) {
 			String linha = scanner.nextLine();
 			String[] listaNumero  = linha.split(" ");
-			// inserir ordenado
-			for (i)
-			ArrayList<Integer> princesa = new ArrayList<Integer>();
+
+			tamanho = listaNumero.length;
+			ArrayList<Integer> arrayNumero = new ArrayList<Integer>();
+			arrayNumero.add(Integer.parseInt(listaNumero[0]));
+			for (i = 0; i < tamanho; i++){
+				   valor = Integer.parseInt(listaNumero[i]);
+					arrayNumero.add(valor);
+				    j = i-1;
+				    while (( j >= 0) && (arrayNumero.get(j) < valor )){
+				    	arrayNumero.set(j+1, arrayNumero.get(j));	
+						j = j -1;
+				    }
+				 arrayNumero.set(j+1, valor);
+			}
+
+			resposta = isJolly(arrayNumero) ? "Jolly" : "Not jolly";
+		    System.out.println( resposta );
 		}
 
 		scanner.close();
 	}
 
 
-	public static int carta (int a){
-		return a
+	public static boolean isJolly (ArrayList arrayNumero){
+		int valorA, valorB;
+		for (int i = 0; i < (arrayNumero.size() - 1) ; i+=2){
+			valorA = (Integer)arrayNumero.get(i);
+			valorB = (Integer)arrayNumero.get(i+1);
+			 // System.out.println( valorA );
+			 System.out.println( valorA +","+ valorB );
+		    // if (( valorA != valorB) &&  (Math.abs( valorA - valorB) != 1)){
+		    // 	 System.out.println( valorA +","+ valorB );
+		    //     return false;
+		    // }
+		}
+		return true;
 	}
-
 }
 
 
