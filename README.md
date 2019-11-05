@@ -4,7 +4,8 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
 
 Lista de Questões:
 
-### checked # [checkbox:checked] 1. Warm up
+### 1. Warm up
+# [checkbox:checked]
  - UVa 12247 – Jollo
 ### 2. Vetores (Arrays 1D – C++ STL vector; ou Java Vector/ArrayList)
  - UVa 10038 – Jolly Jumpers
