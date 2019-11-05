@@ -1,3 +1,6 @@
+# 11581 Grid Successors
+# Autores: Jackson Willian
+
 import sys
 
 def transformaMatriz(vetor, p = -1):
