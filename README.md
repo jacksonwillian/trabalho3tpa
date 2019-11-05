@@ -4,13 +4,13 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
 
 Lista de Questões:
 
-### 1. Warm up
+### [x] 1. Warm up
  - UVa 12247 – Jollo
 ### 2. Vetores (Arrays 1D – C++ STL vector; ou Java Vector/ArrayList)
  - UVa 10038 – Jolly Jumpers
  - UVa 11340 – Newspaper
 ### 3. Matrizes (Arrays 2D)
- - unchecked # [checkbox:unchecked] UVa 10920 – Spiral Tap
+ - [ ] UVa 10920 – Spiral Tap
  - UVa 11581 – Grid successors
 ### 4. Ordenação (C++ STL algorithm; ou Java Collections)
   - UVa 10107 – What is the Median?
