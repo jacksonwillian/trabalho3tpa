@@ -21,11 +21,11 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
 ### 6. Lista Encadeada (C++ STL list; ou Java LinkedList)
   - [ ] UVa 11988 – Broken Keyboard. . .
 ### 7. Pilhas (C++ STL stack; Java Stack)
-  - [ ] UVa 00514 – Rails
-  - [ ] UVa 01062 – Containers
+  - [x] UVa 00514 – Rails
+  - [x] UVa 01062 – Containers
 ### 8. Filas (C++ STL queue/deque; Java Queue/Deque)
   - [ ] UVa 10172 – The Lonesome Cargo
-  - [ ] UVa 10901 – Ferry Loading III
+  - [x] UVa 10901 – Ferry Loading III
 ### 9. Árvore Binária de Pesquisa (balanceada) (C++ STL map; Java TreeMap)
   - [ ] UVa 00939 – Genes
   - [ ] UVa 10132 – File Fragmentation
