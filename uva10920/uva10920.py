@@ -13,16 +13,36 @@ def SpiralTap(ordem, numero):
 		else:
 			# submatriz comeca em ordem 3
 			# anel , min , max, ordem, 
-			anel = False
-			subMatriz = [1, 2, 9, 3]
-			while (anel == False) and ( subMatriz[2] < ordem**2):
-				if (numero >= subMatriz[1]) and ( numero <= subMatriz[2] ): 
-					anel = True
+
+
+			minimo = 1
+			maximo = 3
+			anel = 1
+
+			while ( True ):
+
+				if (minimo**2 <= numero and numero <= maximo**2):
+					break
 				else:
-					subMatriz[0] += 1
-					subMatriz[1] = subMatriz[2] + 1
-					subMatriz[3] = subMatriz[3] + 2
-					subMatriz[2] = subMatriz[3]**2
+					minimo += 2
+					maximo += 2
+					anel += 1
+
+
+
+
+
+
+			# anel = False
+			subMatriz = [anel, (minimo**2) + 1, maximo**2, maximo]
+			# while (anel == False) and ( subMatriz[2] < ordem**2):
+			# 	if (numero >= subMatriz[1]) and ( numero <= subMatriz[2] ): 
+			# 		anel = True
+			# 	else:
+			# 		subMatriz[0] += 1
+			# 		subMatriz[1] = subMatriz[2] + 1
+			# 		subMatriz[3] = subMatriz[3] + 2
+			# 		subMatriz[2] = subMatriz[3]**2
 
 			linhaAcima = meio + subMatriz[0]
 			colunaEsquerda = meio - subMatriz[0]
