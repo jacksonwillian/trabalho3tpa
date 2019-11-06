@@ -7,7 +7,7 @@ public class Main {
         
         Scanner scanner = new Scanner(System.in);
         
-        BitSet agenda_bit = new BitSet(1000010);
+        BitSet agenda_bit = new BitSet(1000005);
         String [] linha;
 
         String buf =  scanner.nextLine();
@@ -43,7 +43,7 @@ public class Main {
                 end     = Integer.parseInt(linha[1]);
 
                 if(!conflit){
-                    for(int j = inic + 1; j < end ; j++){
+                    for(int j = inic; j < end ; j++){
                         if(agenda_bit.get(j)){
                             conflit = true;
                             break;
@@ -70,7 +70,7 @@ public class Main {
 
                     while(inic < agenda_bit.size() && end < agenda_bit.size()){
 
-                        for(int j = inic +1; j < end ;j++){
+                        for(int j = inic; j < end ;j++){
                             if(agenda_bit.get(j)){
                                 conflit = true;
                                 break;
