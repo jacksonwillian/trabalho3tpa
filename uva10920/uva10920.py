@@ -23,8 +23,6 @@ def SpiralTap(ordem, numero):
 					subMatriz[1] = subMatriz[2] + 1
 					subMatriz[3] = subMatriz[3] + 2
 					subMatriz[2] = subMatriz[3]**2
-	
-
 
 			linhaAcima = meio + subMatriz[0]
 			colunaEsquerda = meio - subMatriz[0]
@@ -43,33 +41,20 @@ def SpiralTap(ordem, numero):
 
 			if( numero >=  intervalor1[0] and numero <= intervalor1[1] ):
 				valor = intervalor1[1]
-				while(True):
-					if (valor == numero):
-						return linhaAcima+1, colunaDireita+1
-					valor -= 1
-					linhaAcima -= 1
+				linhaAcima = linhaAcima - (valor - numero)
+				return linhaAcima+1, colunaDireita+1
 			elif( numero >=  intervalor2[0] and numero <= intervalor2[1] ):
 				valor = intervalor2[1]
-				while(True):
-					if (valor == numero):
-						return linhaAbaixo+1, colunaDireita+1
-					valor -= 1
-					colunaDireita -= 1
+				colunaDireita = colunaDireita - (valor - numero)
+				return linhaAbaixo+1, colunaDireita+1
 			elif( numero >=  intervalor3[0] and numero <= intervalor3[1] ):
 				valor = intervalor3[1]
-				while(True):
-					if (valor == numero):
-						return linhaAbaixo+1 , colunaEsquerda+1
-					valor -= 1
-					linhaAbaixo += 1				
+				linhaAbaixo = linhaAbaixo + (valor- numero)
+				return linhaAbaixo+1 , colunaEsquerda+1		
 			elif ( numero >=  intervalor4[0] and numero <= intervalor4[1] ):
 				valor = intervalor4[1]
-				while(True):
-					if (valor == numero):
-						return linhaAcima+1, colunaEsquerda+1
-					valor -= 1
-					colunaEsquerda += 1	
-
+				colunaEsquerda =  colunaEsquerda + (valor - numero)
+				return linhaAcima+1, colunaEsquerda+1
 
 
 def main():
@@ -82,8 +67,7 @@ def main():
 			lin, col = SpiralTap(ordem, numero)
 			print("Line = {}, column = {}.".format(lin, col))
 		linha = sys.stdin.readline()
-
-		
+	
 	return 0
 
 main()
