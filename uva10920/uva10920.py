@@ -13,36 +13,18 @@ def SpiralTap(ordem, numero):
 		else:
 			# submatriz comeca em ordem 3
 			# anel , min , max, ordem, 
-
-
-			minimo = 1
-			maximo = 3
-			anel = 1
-
-			while ( True ):
-
-				if (minimo**2 <= numero and numero <= maximo**2):
-					break
+			anel = False
+			subMatriz = [1, 2, 9, 3]
+			while (anel == False) and ( subMatriz[2] < ordem**2):
+				if (numero >= subMatriz[1]) and ( numero <= subMatriz[2] ): 
+					anel = True
 				else:
-					minimo += 2
-					maximo += 2
-					anel += 1
+					subMatriz[0] += 1
+					subMatriz[1] = subMatriz[2] + 1
+					subMatriz[3] = subMatriz[3] + 2
+					subMatriz[2] = subMatriz[3]**2
+	
 
-
-
-
-
-
-			# anel = False
-			subMatriz = [anel, (minimo**2) + 1, maximo**2, maximo]
-			# while (anel == False) and ( subMatriz[2] < ordem**2):
-			# 	if (numero >= subMatriz[1]) and ( numero <= subMatriz[2] ): 
-			# 		anel = True
-			# 	else:
-			# 		subMatriz[0] += 1
-			# 		subMatriz[1] = subMatriz[2] + 1
-			# 		subMatriz[3] = subMatriz[3] + 2
-			# 		subMatriz[2] = subMatriz[3]**2
 
 			linhaAcima = meio + subMatriz[0]
 			colunaEsquerda = meio - subMatriz[0]
@@ -61,20 +43,33 @@ def SpiralTap(ordem, numero):
 
 			if( numero >=  intervalor1[0] and numero <= intervalor1[1] ):
 				valor = intervalor1[1]
-				linhaAcima = linhaAcima - (valor - numero)
-				return linhaAcima+1, colunaDireita+1
+				while(True):
+					if (valor == numero):
+						return linhaAcima+1, colunaDireita+1
+					valor -= 1
+					linhaAcima -= 1
 			elif( numero >=  intervalor2[0] and numero <= intervalor2[1] ):
 				valor = intervalor2[1]
-				colunaDireita = colunaDireita - (valor - numero)
-				return linhaAbaixo+1, colunaDireita+1
+				while(True):
+					if (valor == numero):
+						return linhaAbaixo+1, colunaDireita+1
+					valor -= 1
+					colunaDireita -= 1
 			elif( numero >=  intervalor3[0] and numero <= intervalor3[1] ):
 				valor = intervalor3[1]
-				linhaAbaixo = linhaAbaixo + (valor- numero)
-				return linhaAbaixo+1 , colunaEsquerda+1		
+				while(True):
+					if (valor == numero):
+						return linhaAbaixo+1 , colunaEsquerda+1
+					valor -= 1
+					linhaAbaixo += 1				
 			elif ( numero >=  intervalor4[0] and numero <= intervalor4[1] ):
 				valor = intervalor4[1]
-				colunaEsquerda =  colunaEsquerda + (valor - numero)
-				return linhaAcima+1, colunaEsquerda+1
+				while(True):
+					if (valor == numero):
+						return linhaAcima+1, colunaEsquerda+1
+					valor -= 1
+					colunaEsquerda += 1	
+
 
 
 def main():
@@ -87,7 +82,8 @@ def main():
 			lin, col = SpiralTap(ordem, numero)
 			print("Line = {}, column = {}.".format(lin, col))
 		linha = sys.stdin.readline()
-	
+
+		
 	return 0
 
 main()
