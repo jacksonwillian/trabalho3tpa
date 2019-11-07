@@ -10,7 +10,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
  - [x] UVa 10038 – Jolly Jumpers
  - [x] UVa 11340 – Newspaper
 ### 3. Matrizes (Arrays 2D)
- - [ ] UVa 10920 – Spiral Tap
+ - [x] UVa 10920 – Spiral Tap
  - [x] UVa 11581 – Grid successors
 ### 4. Ordenação (C++ STL algorithm; ou Java Collections)
   - [x] UVa 10107 – What is the Median?
