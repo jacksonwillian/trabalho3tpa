@@ -7,12 +7,12 @@ public class abc {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         TreeMap<String, String> map = new TreeMap<>();
-        TreeMap<String, Vector> orphans = new  TreeMap<String, Vector>();
- 
+        ArrayList<Vector> orphans = new  ArrayList<Vector>();
+
         int n = scanner.nextInt();
         String nome;
         String value;
-        String gene1, gene2;
+        String gene1, gene2, rgene;
         String chave;
         
         for (int i = 0; i < n; i++) {
@@ -23,31 +23,45 @@ public class abc {
             if (!isNotGene(value)){
                 map.put(nome,value);
             }
-            else if (orphans.containsKey(value)){
-                orphans.get(value).add(nome);
+            else if (map.containsKey(nome)){
+                if (!map.containsKey(value)){
+                    map.put(value,map.get(nome));
+                }
+                //pai mapeado, primeira entrada
+                else {
+                    gene1 = map.get(value);
+                    gene2 = map.get(nome);
+                    rgene = qGene(gene1,gene2);
+                    map.replace(value, rgene);
+                }
             }
             else {
-                Vector <String> parents = new  Vector <String>();
-                parents.add(nome);
-                orphans.put(value, parents);
+                Vector<String> orphan = new Vector<String>();
+                orphan.add(nome);
+                orphan.add(value);
+                orphans.add(orphan);
             }
         }
         scanner.close();
-        Set set = orphans.keySet();
-        Iterator itr_aux;
-        int a = 0;
-        
-        while (a < orphans.size()){
-            itr_aux  = set.iterator();
-            while (itr_aux.hasNext()) {
-                chave = (String) itr_aux.next();
-                if (!map.containsKey(chave) && map.containsKey(orphans.get(chave).get(0)) && map.containsKey(orphans.get(chave).get(1)) ){
-                    gene1 = map.get(orphans.get(chave).get(0));
-                    gene2 = map.get(orphans.get(chave).get(1));
-                    map.put(chave, qGene(gene1, gene2));
-                    a = a+1;
+
+        int cont = 0;
+        while (orphans.size() > 0) {
+            while (map.containsKey(orphans.get(cont).get(0))) {
+                if (!map.containsKey(orphans.get(cont).get(1))){
+                    map.put((String)orphans.get(cont).get(1), map.get(orphans.get(cont).get(0)));
+                    orphans.remove(cont);
                 }
+                else {
+                    gene1 = map.get(orphans.get(cont).get(1));
+                    gene2 = map.get(orphans.get(cont).get(0));
+                    rgene = qGene(gene1,gene2);
+                    map.replace((String)orphans.get(cont).get(1),rgene);
+                    orphans.remove(cont);
+                }
+                cont = 0;
+                if (orphans.size() == 0) break;
             }
+            cont = cont + 1;
         }
 
         Set c = map.keySet();
