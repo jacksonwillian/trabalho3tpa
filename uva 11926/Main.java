@@ -7,7 +7,7 @@ public class Main {
         
         Scanner scanner = new Scanner(System.in);
         
-        BitSet agenda_bit = new BitSet(1000001);
+        BitSet agenda_bit = new BitSet(1000005);
         String [] linha;
 
         String buf =  scanner.nextLine();
@@ -104,7 +104,7 @@ public class Main {
 
             
         }
-        // System.out.println();
+        System.out.println();
         scanner.close();
     }
 }
