@@ -1,0 +1,97 @@
+import java.util.*;
+/**
+ * abc
+ */
+public class abc {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TreeMap<String, String> map = new TreeMap<>();
+        ArrayList<Vector> orphans = new  ArrayList<Vector>();
+
+        int n = scanner.nextInt();
+        String nome;
+        String value;
+        String gene1, gene2, rgene;
+        String chave;
+        
+        for (int i = 0; i < n; i++) {
+            nome = scanner.next();
+            nome = nome.replace(" ","");
+            value = scanner.next();
+            value = value.replace(" ","");
+            if (!isNotGene(value)){
+                map.put(nome,value);
+            }
+            else if (map.containsKey(nome)){
+                if (!map.containsKey(value)){
+                    map.put(value,map.get(nome));
+                }
+                //pai mapeado, primeira entrada
+                else {
+                    gene1 = map.get(value);
+                    gene2 = map.get(nome);
+                    rgene = qGene(gene1,gene2);
+                    map.replace(value, rgene);
+                }
+            }
+            else {
+                Vector<String> orphan = new Vector<String>();
+                orphan.add(nome);
+                orphan.add(value);
+                orphans.add(orphan);
+            }
+        }
+        scanner.close();
+
+        int cont = 0;
+        while (orphans.size() > 0) {
+            while (map.containsKey(orphans.get(cont).get(0))) {
+                if (!map.containsKey(orphans.get(cont).get(1))){
+                    map.put((String)orphans.get(cont).get(1), map.get(orphans.get(cont).get(0)));
+                    orphans.remove(cont);
+                }
+                else {
+                    gene1 = map.get(orphans.get(cont).get(1));
+                    gene2 = map.get(orphans.get(cont).get(0));
+                    rgene = qGene(gene1,gene2);
+                    map.replace((String)orphans.get(cont).get(1),rgene);
+                    orphans.remove(cont);
+                }
+                cont = 0;
+                if (orphans.size() == 0) break;
+            }
+            cont = cont + 1;
+        }
+
+        Set c = map.keySet();
+        Iterator itr = c.iterator();
+        while(itr.hasNext()){
+            chave = (String) itr.next();
+            System.out.printf("%s %s\n", chave, map.get(chave));   
+        }
+    }  
+
+    static public Boolean isNotGene(String value) {
+        if (value.equalsIgnoreCase("dominant") || value.equalsIgnoreCase("recessive") || value.equalsIgnoreCase("non-existent") ) {
+            return false;
+        }
+        return true;
+    }
+
+    static public String qGene(String gene1, String gene2) {
+        if (( gene1.equalsIgnoreCase("dominant") && gene2.equalsIgnoreCase("non-existent") ) || ( gene1.equalsIgnoreCase("non-existent") && gene2.equalsIgnoreCase("dominant") )){
+            return "recessive";
+        }
+        else if (( gene1.equalsIgnoreCase("recessive") && gene2.equalsIgnoreCase("non-existent") ) || ( gene1.equalsIgnoreCase("non-existent") && gene2.equalsIgnoreCase("recessive") )){
+            return "non-existent";
+        }
+        else if (gene1.equalsIgnoreCase("dominant") || gene2.equalsIgnoreCase("dominant")){
+            return "dominant";
+        }
+        else if (gene1.equalsIgnoreCase("recessive") || gene2.equalsIgnoreCase("recessive")) {
+            return "recessive";
+        }
+        return "non-existent";
+    }
+}

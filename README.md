@@ -27,7 +27,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
   - [ ] UVa 10172 – The Lonesome Cargo
   - [x] UVa 10901 – Ferry Loading III
 ### 9. Árvore Binária de Pesquisa (balanceada) (C++ STL map; Java TreeMap)
-  - [ ] UVa 00939 – Genes
+  - [x] UVa 00939 – Genes
   - [ ] UVa 10132 – File Fragmentation
 ### 10. Conjuntos (C++ STL set; Java TreeSet)
   - [ ] UVa 00978 – Lemmings Battle
