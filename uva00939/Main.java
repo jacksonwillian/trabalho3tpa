@@ -1,8 +1,8 @@
 import java.util.*;
 /**
- * abc
+ * Main
  */
-public class abc {
+public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
