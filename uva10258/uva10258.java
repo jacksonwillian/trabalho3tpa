@@ -58,54 +58,57 @@ class Main {
                     linha = scanner.nextLine();
                     if (! linha.equalsIgnoreCase("")){
 
-                             System.out.println(linha);
+                             //System.out.println(linha);
 
                             vetorLinha  = linha.split(" ");
-                            situacao = verificaSituacao ( vetorLinha[3] );
+                            
 
+                           equipe = Integer.parseInt( vetorLinha[0] ) - 1;
+                           questao = Integer.parseInt( vetorLinha[1] ) - 1;
+                           time = Integer.parseInt( vetorLinha[2] );
+                           situacao = verificaSituacao ( vetorLinha[3] );
+           
+                           if( vetorEquipe[equipe] == null){
+                               vetorEquipe[equipe] = new int[11][];                     
+                               vetorEquipe[equipe][10] = new int[2];
+                               // cria a lista geral da equipe
+                               vetorEquipe[equipe][10][0] = 0;
+                                vetorEquipe[equipe][10][1] = 0;
+                           }
+              
+                           if ( vetorEquipe[equipe][questao] == null){
+                               vetorEquipe[equipe][questao] = new int[2];
+                               vetorEquipe[equipe][questao][0] = 0;
+                               vetorEquipe[equipe][questao][1] = -1;
+                           }
+                           
                           
-                            if( situacao != -1){
+                           if ( ( vetorEquipe[equipe][questao][1] == 0) && (situacao == 0) ){
+                               vetorEquipe[equipe][questao][0] += 20;                           
+                           }else if ( ( vetorEquipe[equipe][questao][1] == 0) && (situacao == 1)   ){
+                                vetorEquipe[equipe][questao][0] += time;
+                                vetorEquipe[equipe][questao][1] = 1;
+                                // adiciona a lista geral da equipe 
+                               vetorEquipe[equipe][10][0] += 1;
+                                vetorEquipe[equipe][10][1] += vetorEquipe[equipe][questao][0]; 
+                            }else if ( ( vetorEquipe[equipe][questao][1] == -1) && (situacao == 1)  ){
+                                vetorEquipe[equipe][questao][0] += time;
+                                vetorEquipe[equipe][questao][1] = 1;
+                                // adiciona a lista geral da equipe
+                                vetorEquipe[equipe][10][0] += 1;
+                                vetorEquipe[equipe][10][1] += vetorEquipe[equipe][questao][0]; 
+                            }else if ( ( vetorEquipe[equipe][questao][1] == -1) && (situacao == 0)  ){
+                                vetorEquipe[equipe][questao][0] = 20;
+                                vetorEquipe[equipe][questao][1] = 0;                            
+                            }else if ( (vetorEquipe[equipe][questao][1] == -1 ) && (situacao == -1)){
 
-                               equipe = Integer.parseInt( vetorLinha[0] ) - 1;
-                               questao = Integer.parseInt( vetorLinha[1] ) - 1;
-                               time = Integer.parseInt( vetorLinha[2] );
-               
-                               if( vetorEquipe[equipe] == null){
-                                   vetorEquipe[equipe] = new int[11][];                     
-                                   vetorEquipe[equipe][10] = new int[2];
-                                   // cria a lista geral da equipe
-                                   vetorEquipe[equipe][10][0] = 0;
-                                    vetorEquipe[equipe][10][1] = 0;
-                               }
-                  
-                               if ( vetorEquipe[equipe][questao] == null){
-                                   vetorEquipe[equipe][questao] = new int[2];
-                                   vetorEquipe[equipe][questao][0] = 0;
-                                   vetorEquipe[equipe][questao][1] = -1;
-                               }
-                               
-                              
-                               if ( ( vetorEquipe[equipe][questao][1] == 0) && (situacao == 0) ){
-                                   vetorEquipe[equipe][questao][0] += 20;                           
-                               }else if ( ( vetorEquipe[equipe][questao][1] == 0) && (situacao == 1)   ){
-                                    vetorEquipe[equipe][questao][0] += time;
-                                    vetorEquipe[equipe][questao][1] = 1;
-                                    // adiciona a lista geral da equipe 
-                                   vetorEquipe[equipe][10][0] += 1;
-                                    vetorEquipe[equipe][10][1] += vetorEquipe[equipe][questao][0]; 
-                                }else if ( ( vetorEquipe[equipe][questao][1] == -1) && (situacao == 1)  ){
-                                    vetorEquipe[equipe][questao][0] += time;
-                                    vetorEquipe[equipe][questao][1] = 1;
-                                    // adiciona a lista geral da equipe
-                                    vetorEquipe[equipe][10][0] += 1;
-                                    vetorEquipe[equipe][10][1] += vetorEquipe[equipe][questao][0]; 
-                                }else if ( ( vetorEquipe[equipe][questao][1] == -1) && (situacao == 0)  ){
-                                    vetorEquipe[equipe][questao][0] = 20;
-                                    vetorEquipe[equipe][questao][1] = 0;                            
-                                }
-                          
+                                vetorEquipe[equipe][questao][0] = 0; 
+                                vetorEquipe[equipe][questao][1]= 0;
 
                             }
+                      
+
+                         
                     
                      }else{
 
@@ -154,8 +157,7 @@ class Main {
         }
        
 
-        
-        
+
     }
     
     public static int verificaSituacao (String texto){
