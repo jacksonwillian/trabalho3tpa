@@ -1,6 +1,6 @@
 /* Main.java
  * UVa 10258 - Contest Scoreboard
- * Autores: Jackson Willian, Emanuel Rampinelle
+ * Autores: Jackson Willian
  */
 
 import java.util.Scanner;
