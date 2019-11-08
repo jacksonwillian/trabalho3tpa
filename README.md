@@ -31,4 +31,4 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
   - [ ] UVa 10132 – File Fragmentation
 ### 10. Conjuntos (C++ STL set; Java TreeSet)
   - [ ] UVa 00978 – Lemmings Battle
-  - [ ] UVa 11849 – CD
+  - [x] UVa 11849 – CD
