@@ -14,7 +14,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
  - [x] UVa 11581 – Grid successors
 ### 4. Ordenação (C++ STL algorithm; ou Java Collections)
   - [x] UVa 10107 – What is the Median?
-  - [ ] UVa 10258 – Contest Scoreboard
+  - [x] UVa 10258 – Contest Scoreboard
 ### 5. Manipulação de bits (C++ STL bitset; Java BitSet; bitmask) 
   - [ ] UVa 10264 – The Most Potent Corner
   - [ ] UVa 11926 – Multitasking
