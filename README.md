@@ -28,7 +28,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
   - [x] UVa 10901 – Ferry Loading III
 ### 9. Árvore Binária de Pesquisa (balanceada) (C++ STL map; Java TreeMap)
   - [x] UVa 00939 – Genes
-  - [ ] UVa 10132 – File Fragmentation
+  - [x] UVa 10132 – File Fragmentation
 ### 10. Conjuntos (C++ STL set; Java TreeSet)
   - [ ] UVa 00978 – Lemmings Battle
   - [x] UVa 11849 – CD
