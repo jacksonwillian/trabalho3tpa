@@ -18,7 +18,6 @@ class Soldado implements Comparable<Soldado>{
         super();
         this.hp = hp;
         this.ordInsercao = ordInsercao;
-    
     }
  
     public int getHp() {
@@ -52,8 +51,6 @@ class Soldado implements Comparable<Soldado>{
         return hp+ " "+ ordInsercao;
     }
 
-
-
 }
 
 
@@ -64,10 +61,10 @@ class Main {
         int quantCampo, quantSG, quantSB, quantTeste;
         String linha;
         String[] linhas;
-        TreeSet<Soldado> sg, sb;
-         Iterator<Soldado> sgIterator, sbIterator;
-         boolean terminou;
-         int resultado;
+        TreeSet<Soldado> sg, sb, sgVivo, sbVivo;
+        Iterator<Soldado> sgIterator, sbIterator;
+        boolean terminou;
+        int resultado;
 
         Soldado sgPower, sbPower;
 
@@ -84,7 +81,6 @@ class Main {
                     sb = new TreeSet<Soldado>();
 
                     linha =  br.readLine();
-
                     linhas = linha.split(" ");
 
                     quantCampo = Integer.parseInt(linhas[0]);
@@ -92,123 +88,65 @@ class Main {
                     quantSB = Integer.parseInt(linhas[2]);
                     
                     for (int j = 0; j < quantSG; j++){
-                    	linha =  br.readLine();
+                        linha =  br.readLine();                     
                         Soldado soldado = new Soldado (Integer.parseInt(linha), j); 
                         sg.add( soldado );
                     }
 
-                    
                     for (int j = 0; j < quantSB; j++){
                         linha =  br.readLine();
                         Soldado soldado = new Soldado (Integer.parseInt(linha), j); 
                         sb.add( soldado );
                     }
 
-
-
-
-                    // System.out.println("TODOS OS ELEMENTOS DE SG");
-                    // sgIterator = sg.iterator();
-                    // while (sgIterator.hasNext()) {
-                    //     Soldado Soldado = sgIterator.next();
-                    //      System.out.println(Soldado.getHp() + " "+ Soldado.getOrdInsercao());
-                    // }
-
                     
-                    // System.out.println("TODOS OS ELEMENTOS DE SB");
-                    // sbIterator = sb.iterator();
-                    // while (sbIterator.hasNext()) {
-                    //     Soldado Soldado = sbIterator.next();
-                    //      System.out.println(Soldado.getHp() + " "+ Soldado.getOrdInsercao());
-                    // }
 
-
-
-
-
-                 
-                    terminou = false;
-
-                     // System.out.println(" -- COMBATE -- \n");
                     // combates
+                    terminou = false;
                     while ( ! terminou ) { 
 
+                        // mesma quantidade de soldados para cada campo de batalha
+                        if ( sg.size() >= quantCampo && sb.size() >= quantCampo){
+                            batalha ( sg,  sb, quantCampo);
+                        }  else if ( sg.size() == sb.size() ){
+                            batalha ( sg,  sb,  sb.size() );
+                        }else if (sb.size() > sg.size()){
+                            batalha ( sg,  sb, sg.size()  );
+                        }else if (sg.size() > sb.size()){
+                            batalha ( sg,  sb, sb.size()  );
+                        }
+                        
+                        
+                        // Verificar se algum time ganhou
+                        if( sg.size() == 0 && sb.size() == 0 ){
+                                System.out.println("green and blue died");
+                                terminou = true;
+                           }else if (sg.size() != 0 && sb.size() == 0){
+                                System.out.println("green wins");
 
+                                sgIterator = sg.iterator();
+                                while (sgIterator.hasNext()) {
+                                    Soldado Soldado = sgIterator.next();
+                                    System.out.println( Soldado.getHp() );
+                                }
+                                terminou = true;
+                            }else if (sb.size() != 0 && sg.size() == 0) {
+                                System.out.println("blue wins"); 
 
-
-                    	if ( (  sg.isEmpty() == false && sb.isEmpty() == false ) ){
-
-                            sgPower = sg.first();
-                            sbPower = sb.first();
-                            resultado = 0;
-
-                            sg.remove(sgPower);
-                            sb.remove(sbPower);
-
-                            // ganhou o combate sbPower
-                            if( sgPower.getHp() < sbPower.getHp() ){
-
-                                resultado = sbPower.getHp() - sgPower.getHp();
-                                sbPower.setHp(resultado);
-                                sb.add( sbPower );
-                                // System.out.println("\nazul "+resultado );
-                            // ganhou o  combate sgPower
-                            }else if ( sgPower.getHp() > sbPower.getHp() ){
-                                resultado = sgPower.getHp() -  sbPower.getHp();
-                                sgPower.setHp(resultado);
-                                sg.add( sgPower );
-                                // System.out.println("\nverde "+resultado );
+                                sbIterator = sb.iterator();
+                                while (sbIterator.hasNext()) {
+                                    Soldado Soldado = sbIterator.next();
+                                    System.out.println( Soldado.getHp() );
+                                }
+                                terminou = true;
                             }
+                   } 
 
-
-             
-
-                    	}else{
-
-                          terminou = true;
-                    	}
-
-                        quantCampo -= 1;
-            	   } 
-
-                   // System.out.println("jogo acabou");
-
-
-
-                   if( sg.size() == 0 && sb.size() == 0 ){
-
-                        System.out.println("green and blue died");
-
-
-                   }else if (sg.size() != 0){
-
-                        System.out.println("green wins");
-
-                        sgIterator = sg.iterator();
-                        while (sgIterator.hasNext()) {
-                            Soldado Soldado = sgIterator.next();
-                            System.out.println( Soldado.getHp() );
-                        }
-
-
-                    }else{
-
-                        System.out.println("blue wins"); 
-
-
-                        sbIterator = sb.iterator();
-                        while (sbIterator.hasNext()) {
-                            Soldado Soldado = sbIterator.next();
-                            System.out.println( Soldado.getHp() );
-                        }
-
-
-
+                   if( i != (quantTeste - 1) ){
+                        System.out.println(""); 
                     }
-
-                    System.out.println(""); 
-
              
+
             }
 
         }
@@ -219,6 +157,51 @@ class Main {
     }
 
 
+    public static void batalha ( TreeSet<Soldado> sg,  TreeSet<Soldado> sb, int quantCampo){
+
+        TreeSet<Soldado> sgVivo, sbVivo;
+        Soldado sgPower, sbPower;
+        Iterator<Soldado> iterator;
+        int resultado;
+        sgVivo = new TreeSet<Soldado>();
+        sbVivo = new TreeSet<Soldado>();
+
+         
+        for (int k = 0;  k < quantCampo; k++){
+                resultado = 0;
+                sgPower = sg.first();
+                sbPower = sb.first();
+
+                sg.remove(sgPower);
+                sb.remove(sbPower);
+
+                // ganhou o combate sbPower
+                if( sgPower.getHp() < sbPower.getHp() ){
+                    resultado = sbPower.getHp() - sgPower.getHp();
+                    sbPower.setHp(resultado);
+                    sbVivo.add( sbPower );
+
+                // ganhou o  combate sgPower
+                }else if ( sgPower.getHp() > sbPower.getHp() ){
+                    resultado = sgPower.getHp() -  sbPower.getHp();
+                    sgPower.setHp(resultado);
+                    sgVivo.add( sgPower );
+                }
+        }
+
+       
+       iterator = sgVivo.iterator();
+        while (iterator.hasNext()) {
+            Soldado soldado = iterator.next();
+            sg.add(soldado);
+        } 
+      
+       iterator = sbVivo.iterator();
+        while (iterator.hasNext()) {
+            Soldado soldado = iterator.next();
+            sb.add(soldado);
+        }  
+    }
+
  }
 
-// fim classe Main
