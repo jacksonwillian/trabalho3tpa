@@ -1,46 +1,57 @@
+/*
+    # Emanuel Rampinelli Gloria
+    # uva 11988
+*/
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
         
-        Scanner scanner = new Scanner(System.in);
-        
+        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
         LinkedList lista = new LinkedList();
-        String linha,s;
-        char [] c;
-        boolean home = true;
         
-        while(scanner.hasNextLine()){
+        String linha;
+        char [] c;
+        int pont;
+       
+        try{
             
-            linha = scanner.nextLine();
-            c = linha.toCharArray();
+            linha =  buf.readLine();
             
-            for (int i = 0; i < c.length;i++){
-                if(c[i] == '['){
-                    home = true;
-                }else if(c[i] == ']'){
-                    home = false;
-                }else{
-                    if(home){
-                        lista.addFirst(c[i]);
+            while(linha !=null){
+                
+                c = linha.toCharArray();
+
+                pont = 0;
+
+                for (int i = 0; i < c.length;i++){
+
+                    if(c[i] == '['){
+                        pont = 0;
+                    }else if(c[i] == ']'){
+                        pont = lista.size();
                     }else{
-                        lista.addLast(c[i]);
+                        lista.add(pont++,c[i]);
                     }
+
                 }
-            
+                for(int j = 0; j < lista.size();j++){
+                    System.out.print(lista.get(j));
+                }
+                
+                System.out.print("\n");
+                lista.clear();
+                
+                linha =  buf.readLine();
             }
-            
-            s = "";
-            for(int i = 0; i < lista.size();i++){
-                s += lista.get(i);
-            }
-            lista.clear();
-            System.out.println(s);
-            
-        }       
+        }catch(Exception e){
+            System.out.print(e);
+        }
+       
     }
-    
-   
+
 }
