@@ -1,3 +1,9 @@
+
+/*
+    # Emanuel Rampinelli Gloria
+    # uva 11926
+*/
+
 import java.util.BitSet;
 import java.util.Scanner;
 
