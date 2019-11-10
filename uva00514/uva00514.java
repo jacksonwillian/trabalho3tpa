@@ -2,9 +2,10 @@ import java.util.Scanner;
 import java.util.Stack;
 
 /**
- * MAIN514
+ * Vinicius Freitas Rocha
+    00514
  */
-    class M514 {
+    class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
