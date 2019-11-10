@@ -11,12 +11,14 @@ public class Main {
 
     public static void main(String[] args) {
         
-        BufferedReader buf = new BufferedReader(new InputStreamReader(System.in));
-        LinkedList lista = new LinkedList();
-        
+        BufferedReader buf;
+        buf = new BufferedReader(new InputStreamReader(System.in));
+        LinkedList<Character> lista = new LinkedList();
+    
         String linha;
         char [] c;
-        int pont;
+        
+        int indicador;
        
         try{
             
@@ -26,26 +28,26 @@ public class Main {
                 
                 c = linha.toCharArray();
 
-                pont = 0;
+                indicador = 0;
 
                 for (int i = 0; i < c.length;i++){
 
                     if(c[i] == '['){
-                        pont = 0;
+                        indicador = 0;
                     }else if(c[i] == ']'){
-                        pont = lista.size();
+                        indicador = lista.size();
                     }else{
-                        lista.add(pont++,c[i]);
+                        lista.add(indicador++,c[i]);
                     }
 
                 }
-                for(int j = 0; j < lista.size();j++){
-                    System.out.print(lista.get(j));
-                }
                 
-                System.out.print("\n");
+                StringBuilder res = new StringBuilder();
+                for (char x : lista) res.append(x);
+                
+                System.out.println(res.toString());
+                
                 lista.clear();
-                
                 linha =  buf.readLine();
             }
         }catch(Exception e){
