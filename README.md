@@ -16,7 +16,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
   - [x] UVa 10107 – What is the Median?
   - [x] UVa 10258 – Contest Scoreboard
 ### 5. Manipulação de bits (C++ STL bitset; Java BitSet; bitmask) 
-  - [ ] UVa 10264 – The Most Potent Corner
+  - [x] UVa 10264 – The Most Potent Corner
   - [x] UVa 11926 – Multitasking
 ### 6. Lista Encadeada (C++ STL list; ou Java LinkedList)
   - [ ] UVa 11988 – Broken Keyboard. . .
