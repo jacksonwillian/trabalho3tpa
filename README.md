@@ -19,7 +19,7 @@ Grupo: Emanuel Rampinelli, Jackson Willian, Vinicius Freitas
   - [x] UVa 10264 – The Most Potent Corner
   - [x] UVa 11926 – Multitasking
 ### 6. Lista Encadeada (C++ STL list; ou Java LinkedList)
-  - [ ] UVa 11988 – Broken Keyboard. . .
+  - [x] UVa 11988 – Broken Keyboard. . .
 ### 7. Pilhas (C++ STL stack; Java Stack)
   - [x] UVa 00514 – Rails
   - [x] UVa 01062 – Containers
