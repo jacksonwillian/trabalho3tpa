@@ -1,3 +1,4 @@
+
 # 11581 Grid Successors
 # Autores: Jackson Willian
 
@@ -22,11 +23,12 @@ def transformaMatriz(vetor, p = -1):
 		A[2][1] = (vetor[2][0] + vetor[1][1] + vetor[2][2]) % 2
 		A[2][2] = (vetor[1][2] + vetor[2][1] ) % 2
 
-		if (True == isNula (vetor)):
+		p = p + 1
+		
+		if (True == isNula(A)):
 			print(p)
 			return None
 		else:
-			p = p + 1
 			transformaMatriz(A, p)
 
 
@@ -76,10 +78,4 @@ def main ():
 			transformaMatriz( matriz )
 			
 main()			
-
-
-
-
-
-
 
