@@ -17,16 +17,13 @@ public class Main {
         while (c < n){
 
             TreeMap<Integer, ArrayList<String>> map = new TreeMap<Integer, ArrayList<String>>();
-            int menor = 99999; 
-            int maior = 0;
+            
             while(scanner.hasNext()) {
                 String linha = scanner.nextLine();
                 if (linha.equalsIgnoreCase("")) {
                     break;
                 }
                 else {
-                    if (linha.length() < menor) menor = linha.length();
-                    if (linha.length() > maior) maior = linha.length();
                     if (map.containsKey(linha.length())){
                         if(!map.get(linha.length()).contains(linha)) map.get(linha.length()).add(linha);
                     }
